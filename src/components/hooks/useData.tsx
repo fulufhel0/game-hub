@@ -17,7 +17,6 @@ export default function useData<T>(endpoint: string){
         const controller = new AbortController();
         apiClient.get<FetchResponse<T>>(endpoint, {signal: controller.signal})
         .then(res => {
-            console.log(res.data);
             setData(res.data.results)
             setIsLoading(false)
         })
