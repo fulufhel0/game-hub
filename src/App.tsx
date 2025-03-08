@@ -5,9 +5,11 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./components/hooks/useGenres";
 import PlatformFilter from "./components/PlatformFilter";
+import { Platform } from "./components/hooks/useGames";
 
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform|null>(null);
   return (
     <Grid
       templateAreas={{
@@ -29,8 +31,8 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <PlatformFilter />
-        <GamesList selectedGenre={selectedGenre} />
+        <PlatformFilter onSelectPlatform={(platform) => setSelectedPlatform(platform)} selectedPlatform={selectedPlatform} />
+        <GamesList selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
       </GridItem>
     </Grid>
   );
