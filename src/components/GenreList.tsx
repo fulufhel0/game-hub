@@ -23,7 +23,7 @@ const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
               boxSize="32px"
               borderRadius={4}
             />
-            <Button fontWeight={selectedGenre?.id == genre.id ? "bold" : "normal"} fontSize="lg" variant="link" onClick={() => onSelectGenre(genre)}>{genre.name}</Button>
+            <Button fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"} fontSize="lg" variant="link" onClick={() => onSelectGenre(genre)}>{genre.name}</Button>
           </HStack>
         </ListItem>
       ))}
