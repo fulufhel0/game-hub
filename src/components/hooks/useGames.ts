@@ -12,7 +12,7 @@ export interface Game{
     name: string;
     background_image: string;
     parent_platforms:{platform: Platform}[];
-    metacritic: number
+    metacritic: number;
 }
 
 export default function useGames(gameQuery: GameQuery){
@@ -21,7 +21,8 @@ export default function useGames(gameQuery: GameQuery){
         {
             genres: gameQuery.genre?.id, 
             platforms: gameQuery.platform?.id,
-            ordering: gameQuery.ordering
+            ordering: gameQuery.ordering,
+            search: gameQuery.searchText
         }
     }, [gameQuery])
 }
