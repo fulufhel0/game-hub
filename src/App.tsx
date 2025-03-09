@@ -13,6 +13,7 @@ import { Genre } from "./components/hooks/useGenres";
 import PlatformFilter from "./components/PlatformFilter";
 import { Platform } from "./components/hooks/useGames";
 import SortSelector from "./components/SortSelector";
+import DynamicHeading from "./components/DynamicHeading";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -48,6 +49,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
+        <DynamicHeading gameQuery={gameQuery}/>
         <Flex marginBottom={4} paddingLeft={2}>
           <Box marginRight={5}>
             <PlatformFilter
