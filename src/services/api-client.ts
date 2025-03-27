@@ -1,13 +1,20 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+import { GameQuery } from "../App";
 
 export interface FetchResponse<T>{
     count: number,
     results: T[]
 }
 
-export default axios.create({
+ const client =  axios.create({
     baseURL: "https://api.rawg.io/api",
     params: {
         key: '6924a28ea8fd43d1827779604778875f'
     }
 })
+
+export default class ApiClient{
+    get = <T>(path: string, options?: AxiosRequestConfig) => {
+        return client.get<FetchResponse<T>>(path, options).then(res => res.data)
+    }
+}

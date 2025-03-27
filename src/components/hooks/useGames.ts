@@ -13,18 +13,20 @@ export interface Game{
     rating_top: number
 }
 
+const client = new apiClient();
+
 export default function useGames(gameQuery: GameQuery){
 
     return useQuery<FetchResponse<Game>, Error>({
         queryKey: ['games', gameQuery],
-        queryFn: () => apiClient.get<FetchResponse<Game>>('/games', {params: 
+        queryFn: () => client.get<Game>('/games', {params: 
             {
                 genres: gameQuery.genre?.id, 
                 parent_platforms: gameQuery.platform?.id,
                 ordering: gameQuery.ordering,
                 search: gameQuery.searchText
             }
-        }).then((response) => response.data),
+        }),
 
     });
 }
