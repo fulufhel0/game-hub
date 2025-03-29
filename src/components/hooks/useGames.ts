@@ -19,7 +19,7 @@ export default function useGames(gameQuery: GameQuery){
 
     return useInfiniteQuery<FetchResponse<Game>, Error>({
         queryKey: ['games', gameQuery],
-        queryFn: ({ pageParam }) => client.get<Game>('/games', {params: 
+        queryFn: ({ pageParam = 1 }) => client.get<Game>('/games', {params: 
             {
                 genres: gameQuery.genre?.id, 
                 parent_platforms: gameQuery.platform?.id,

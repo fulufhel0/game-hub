@@ -14,7 +14,7 @@ const useGenre = () => useQuery({
     queryKey: ['genres'],
     queryFn: () => client.get<Genre>('/genres'),
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
-    initialData: { count: 0, results: GenresDataSource }
+    initialData: { count: 0, next: null, previous: null, results: GenresDataSource }
 });
 
 export default useGenre
